@@ -1,28 +1,32 @@
 <html>
     <body>
       <center>
-        <h1>Ticket status!!</h1>
+          {{data}}
+        <h1>&nbsp; &nbsp; Ticket status!!</h1>
           <p>Ticket ID is {{ticket_ID}}</p>
           <form method = 'POST' action = "{{url_for('resolveTicket', ticketId = ticket_ID)}}">
               <br>
               <br>
-              <label for="AdminId">Admin Id</label>
-              <input type="text" id="AdminId" name="AdminId" required>
+              <label for="AdminId"> Admin Id &nbsp;&nbsp;&nbsp;</label>
+              <input type="text" id="AdminId" name="AdminId" required style="width: 183;">
               <br>
               <br>
-              <label for="Comment">Comment</label>
+              <label for="Comment">&nbsp; Comment &nbsp; </label>
               <textarea type="Comment" id="Comment" name="Comment" required></textarea>
               <br>
               <br>
-              <label for="Status">Status</label>
-              <input type="text" id="Status" name="Status" required>
+              <label for="Status">&nbsp; Status &nbsp; &nbsp; &nbsp; &nbsp;</label>
+              <input type="text" id="Status" name="Status" required style="width: 183;">
               <br>
               <br>
  
-              <button>submit</button>
+              <button>&nbsp; submit &nbsp;</button>
 
           </form>
-            <button><a href="Admin ticket.html">Back</a></button>
+          <br>
+          <br>
+          <a href = "{{url_for('adminlogin')}}"><button>Admin Home Page</button></a>
+
 
        
        <style>  
@@ -30,7 +34,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
+              border-style: double ;
+              top: 50%;
+            left 50%;
+            transform: translate(15%,20%);
+            width : 500px;
+            height: 550px;
+            margin: auto;
+            border: 2px solid black;
             background-color:blanchedalmond;
           button{
             background-color: green;

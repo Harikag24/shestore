@@ -363,7 +363,7 @@ def resolveTicket(ticketId):
     data = (adminId, status, comment, ticketId)
     myCursor.execute(ticket_query, data)
     dbConnection.commit()
-  return render_template('admin/manageTickets/TicketResolved.html', data = "Ticket Resolved")
+  return render_template('admin/manageTickets/resolveTicket.html', data = "Ticket Resolved!!")
 
 #manage categories
 @app.route('/manageCategories', methods = ['GET', 'POST'])

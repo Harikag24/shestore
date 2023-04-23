@@ -1,21 +1,29 @@
 <html>
     <body>
-    {{data}}
       <center>
         <form method="post" action={{url_for('manageCategories')}} enctype="multipart/form-data">
+            <center>{{data}}</center>
           <h1> Manage Categories </h1>
-          <label for="Description">Description:</label>
+          <label for="Description">Description:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
           <input type="textarea" id="Description" name="Description" required>
-            <label for="adminId">Enter adminID</label>
-          <select id="adminId" name="adminId" required>
+            <br>
+            <br>
+            <label for="adminId">&nbsp; Enter adminID &nbsp; &nbsp; &nbsp; &nbsp;</label>
+          <select id="adminId" name="adminId" required style="width: 153;">
               {% for admin in admins %}
                    <option value={{admin}}>{{admin}}</option>
               {% endfor %}
           </select>
-            <label for="category_pic">Category Picture:</label>
+            <br>
+            <br>
+            <label for="category_pic">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Category Picture &nbsp; &nbsp;</label>
           <input type="file" name="category_pic" id="category_pic" accept=".jpg"  required>
         <br>
         <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <input type="submit" value="Add Category">
 
         </form>
@@ -25,7 +33,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-          
+          border-style: double ;
+            top: 50%;
+            left:50%;
+            transform: translate(15%,20%);
+            width : 600px;
+            height: 550px;
+            margin: auto;
+            border: 2px solid black;
             background-image:url('https://media.wallpaperchill.com/gradient-wallpapers/prim-color-gradient-wallpaper.jpg');
           .button{
             background-color: rgb(109, 109, 231);
