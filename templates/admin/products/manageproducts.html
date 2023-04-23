@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.box{
+  float: left;
+  width: 23.33%;
+  padding: 50px;
+  margin-left: 20px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  text-align: center;
+  
+}
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {
+  background-color: pink;
+color: black;}
+
+.button:active {
+  background-color: darkblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+</head>
+<body style="background-color: cornsilk">
+
+<h1 style="text-align: center;">Manage products</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="clearfix">
+  <div class="box" style="background-color:lightblue">
+   <a href="{{url_for('insertProducts')}}"> <b><button class="button" >Insert Products</button></b></a>
+  </div>
+  
+  <div class="box" style="background-color:coral">
+    <a href="{{url_for('deleteProducts')}}"><b><button class="button" >Delete products</button></b></a>
+   
+  </div>
+  <div class="box" style="background-color:lightblue">
+    <a href="{{url_for('modifyProducts')}}"><b><button class="button" >Modify products</button></b></a>
+  </div>
+  <div class="box" style="background-color:coral">
+    <a href="{{url_for('homePurchases')}}"><b><button class="button" >Purchases</button></b></a>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,110 @@
+<html>
+<body>
+
+<h2><center>View Tickets</center></h2>
+
+<form>
+<table>
+        <thead>
+             <tr>
+             <th>Ticket_ID</th>
+             <th>Customer_ID</th>
+             <th>Product_ID</th>
+             <th>Type</th>
+             <th>Description</th>
+                 <th>Admin_ID</th>
+             <th>status</th>
+             <th>comment</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for ticket in ticketDetails %}
+           <tr>
+              <td>{{ticket.Ticket_ID}}</td>
+              <td>{{ticket.Customer_ID}}</td>
+               <td>{{ticket.Product_ID}}</td>
+               <td>{{ticket.Type}}</td>
+               <td>{{ticket.Description}}</td>
+              <td>{{ticket.Admin_ID}}</td>
+              <td>{{ticket.status}}</td>
+              <td>{{ticket.comment}}</td>
+               <td>
+              {% if ticket.status == "PENDING" %}
+              <form method='POST' action="{{url_for('renderResolveTicket', ticketId= ticket.Ticket_ID)}}">
+                 <button type="submit">Resolve</button>
+              </form>
+               {% endif %}
+               </td>
+           </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </form>
+<style>
+*{
+ margin:0;
+ padding:0;
+ outline: 0;
+}
+button{
+    text-align:center;
+    margin-top: 2em;
+    font-size: 30px;
+    padding:5px 5px;
+}
+.filter{
+ position: absolute;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ right: 0;
+ z-index: 1;
+ background: rgb(76, 233, 199);
+background: -moz-linear-gradient(90deg, rgb(76, 233, 212) 0%, rgb(74, 233, 196) 100%);
+background: -webkit-linear-gradient(90deg, rgb(76, 230, 233) 0%, rgb(74, 233, 183) 100%);
+background: linear-gradient(90deg, rgb(76, 233, 223) 0%, white  100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
+opacity: .7;
+}
+table{
+ position: absolute;
+ z-index: 2;
+ left: 50%;
+ top: 30%;
+ transform: translate(-70%,-30%);
+ width: 60%; 
+ border-collapse: collapse;
+ border-spacing: 0;
+ box-shadow: 0 2px 15px rgba(64,64,64,.7);
+ border-radius: 12px 12px 0 0;
+ overflow: hidden;
+
+}
+td , th{
+ padding: 15px 20px;
+ text-align: center;
+ 
+
+}
+th{
+ background-color: #68c8c3;
+ color: #fafafa;
+ font-family: 'Open Sans',Sans-serif;
+ font-weight: 200;
+ text-transform: uppercase;
+
+}
+tr{
+ width: 100%;
+ background-color: #fafafa;
+ font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+ background-color: #eeeeee;
+}
+.
+
+</style>
+
+</body>
+</html>

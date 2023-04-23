@@ -1,0 +1,48 @@
+<html>
+    <body>
+      <center>
+        <h1>Ticket status!!</h1>
+          <p>Ticket ID is {{ticket_ID}}</p>
+          <form method = 'POST' action = "{{url_for('resolveTicket', ticketId = ticket_ID)}}">
+              <br>
+              <br>
+              <label for="AdminId">Admin Id</label>
+              <input type="text" id="AdminId" name="AdminId" required>
+              <br>
+              <br>
+              <label for="Comment">Comment</label>
+              <textarea type="Comment" id="Comment" name="Comment" required></textarea>
+              <br>
+              <br>
+              <label for="Status">Status</label>
+              <input type="text" id="Status" name="Status" required>
+              <br>
+              <br>
+ 
+              <button>submit</button>
+
+          </form>
+            <button><a href="Admin ticket.html">Back</a></button>
+
+       
+       <style>  
+          body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            background-color:blanchedalmond;
+          button{
+            background-color: green;
+            color:white;
+            border-color: none;
+            height:40px;
+            width: 120px;
+            border-radius:10px;
+            cursor:pointer;
+            font-size: 10px;
+          }
+       </style>
+    </center>
+    </body>
+</html>

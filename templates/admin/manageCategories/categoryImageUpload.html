@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image for category</title>
+</head>
+<body>
+<form action={{url_for('file')}} method="post">
+  <div>
+    <label for="category_pic">Choose file to upload</label><br>
+    <input
+      type="file"
+      id="category_pic"
+      name="category_pic"
+      accept=".jpg, .jpeg, , .JPG, .png ,.JPEG ,.PNG"  required/>
+  </div>
+  <div>
+    <br>
+    <button>Submit</button>
+  </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+    <body>
+      
+      <center>
+        {{data}}<br><br><br>
+        <form method="post" action={{url_for('verifyadminlogin')}}>
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+    <br>
+    <br>
+    <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+  <br>
+  <br>
+  <button>login as admin</button>
+</form>       
+       <style>  
+          body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image:url('https://media.wallpaperchill.com/gradient-wallpapers/prim-color-gradient-wallpaper.jpg');
+          .button{
+            background-color: rgb(109, 109, 231);
+            color:white;
+            border-color: none;
+            height:40px;
+            width: 120px;
+            border-radius:10px;
+            cursor:pointer;
+            font-size: 10px;
+          }
+       </style>
+    </center>
+    </body>
+</html>

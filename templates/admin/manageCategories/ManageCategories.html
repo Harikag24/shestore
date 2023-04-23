@@ -1,0 +1,43 @@
+<html>
+    <body>
+    {{data}}
+      <center>
+        <form method="post" action={{url_for('manageCategories')}} enctype="multipart/form-data">
+          <h1> Manage Categories </h1>
+          <label for="Description">Description:</label>
+          <input type="textarea" id="Description" name="Description" required>
+            <label for="adminId">Enter adminID</label>
+          <select id="adminId" name="adminId" required>
+              {% for admin in admins %}
+                   <option value={{admin}}>{{admin}}</option>
+              {% endfor %}
+          </select>
+            <label for="category_pic">Category Picture:</label>
+          <input type="file" name="category_pic" id="category_pic" accept=".jpg, .jpeg"  required>
+        <br>
+        <br>
+            <input type="submit" value="Add Category">
+
+        </form>
+       
+       <style>  
+          body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          
+            background-image:url('https://media.wallpaperchill.com/gradient-wallpapers/prim-color-gradient-wallpaper.jpg');
+          .button{
+            background-color: rgb(109, 109, 231);
+            color:white;
+            border-color: none;
+            height:40px;
+            width: 120px;
+            border-radius:10px;
+            cursor:pointer;
+            font-size: 10px;
+          }
+       </style>
+    </center>
+    </body>
+</html>
