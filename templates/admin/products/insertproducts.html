@@ -91,7 +91,7 @@ input[type=submit]:hover {
 
 
 <div class="container">
-  <form  method = "post" action={{url_for('addProduct')}}>
+  <form  method = "post" action="{{url_for('addProduct')}}" enctype="multipart/form-data">
     <div class="row">
       <div class="col-25">
         <label for="categoryID">Enter the categoryID:</label><br>
@@ -112,6 +112,38 @@ input[type=submit]:hover {
         <input type="text" id="productName" name="productName" placeholder="Product Name" required>
       </div>
     </div>
+     <div class="row">
+    <div class="col-25">
+     <label for="productDescription">Enter product description:</label><br>
+    </div>
+    <div class="col-75">
+      <input type="text" id="productDescription" name="productDescription" placeholder="Product Description" required>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-25">
+     <label for="productColor">Enter product color:</label><br>
+    </div>
+    <div class="col-75">
+      <input type="text" id="productColor" name="productColor" placeholder="Product color" required>
+    </div>
+    </div>
+      <div class="row">
+    <div class="col-25">
+     <label for="productBrand">Enter product brand:</label><br>
+    </div>
+    <div class="col-75">
+      <input type="text" id="productBrand" name="productBrand" placeholder="Product brand" required>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-25">
+     <label for="productQuantity">Enter product Quantity:</label><br>
+    </div>
+    <div class="col-75">
+      <input type="text" id="productQuantity" name="productQuantity" placeholder="Product Quantity" required>
+    </div>
+  </div>
     <div class="row">
         <div class="col-25">
          <label for="rating">Enter the rating of the product:</label><br>
@@ -140,12 +172,23 @@ input[type=submit]:hover {
         </select>
       </div>
     </div>
+    <div class="row">
+        <div class="col-25">
+         <label for="product_pic">Insert Image of the product only in .jpg format:</label><br>
+        </div>
+        <div class="col-75">
+          <input type="file" id="product_pic" name="product_pic" accept=".jpg" required>
+
+        </div>
+      </div>
     <br>
     <br>
     <div class="row">
       <input type="submit" value="Submit">
     </div>
   </form>
+  <a href = "{{url_for('adminlogin')}}"><button>Admin Home Page</button></a>
+
 </div>
 
 </body>

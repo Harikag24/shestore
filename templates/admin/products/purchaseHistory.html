@@ -111,8 +111,8 @@ input[type=submit]:hover {
 <div class="container">
     <div class="row">
       <div class="col-75">
-
-          <p><center> products purchased </center></p>
+          <p><center>Products Purchased: </center></p>
+          <center>
         <table align ="center">
             <tr>
                 <th>Product Id </th>
@@ -125,17 +125,15 @@ input[type=submit]:hover {
                  {% endfor %}
             </tr>
           </table>
-    </div>
-    </div>
-    <br>
-    <br>
-    <div class="row">
-        <center><a href="{{url_for('manageProducts')}}"><b><button class="button" >Back to Homepage</button></b></a></center>
-    </div>
-    </div>
+          </center>
+          <br>
+          <br>
+          <br>
+                  <center><a href = "{{url_for('adminlogin')}}"><button>Admin Home Page</button></a></center>
 
-
-
+    </div>
+    </div>
+</div>
 </body>
 </html>
 

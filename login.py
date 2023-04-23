@@ -135,11 +135,7 @@ def product(product_id):
 
 @app.route('/listProducts',methods=['GET','POST'])
 def listProducts():
-    # Fetch a list of products from the database or data source
-    # Replace the following lines with your own code
-    # myCursor.execute("select * from Products")
     products = []
-    # for row in myCursor:
     product = {
         'id': 1,
         'name': "lipstick",
@@ -186,26 +182,48 @@ def insertProducts():
 
 @app.route('/addProduct', methods = ['GET','POST'])
 def addProduct():
-    categoryId = request.form['categoryID']
-    name = request.form['productName']
-    rating = request.form['rating']
-    price = request.form['price']
-    adminId = request.form['adminId']
-    query = "INSERT INTO Products (Category_ID, Name, Rating, Price, Admin_ID) VALUES (%s, %s, %s, %s, %s)"
-    data = (categoryId, name, rating, price, adminId)
-    myCursor.execute(query, data)
-    dbConnection.commit()
-    return render_template ('admin/products/insertproducts.html', data = "Product inserted successfully!")
+    if request.method == 'POST':
+        try:
+           categoryId = request.form['categoryID']
+           name = request.form['productName']
+           description = request.form['productDescription']
+           color = request.form['productColor']
+           brand = request.form['productBrand']
+           quantity = request.form['productQuantity']
+           rating = request.form['rating']
+           price = request.form['price']
+           adminId = request.form['adminId']
+           product_pic = request.files['product_pic']
+        except KeyError as e:
+            return "Bad request: missing form field - {}".format(e), 400
+    # Save uploaded image of the product to static folder
+    if product_pic.filename != '':
+        filename = secure_filename(product_pic.filename)
+        product_pic.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+    query = "INSERT INTO Products (Category_ID, Name, Description,Color,Brand,Quantity,Rating, Price, Admin_ID) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    data = (categoryId, name, description, color, brand, quantity, rating, price, adminId)
+    try:
+        myCursor.execute(query, data)
+        dbConnection.commit()
+        return render_template('admin/products/insertproducts.html', data = "Product inserted successfully!")
+    except Exception as e:
+        dbConnection.rollback()
+        return render_template('admin/products/insertproducts.html', data = "Error inserting product: {}".format(e))
+
 @app.route('/deleteProducts', methods = ['GET','POST'])
 def deleteProducts():
     #todo :: do validations and remove from the db
   if request.method == 'POST':
     productId = request.form['productID']
     delete_query = "delete from Products where ID = %s"
-    myCursor.execute(delete_query, (productId,))
-    dbConnection.commit()
-    return render_template('admin/products/deleteProducts.html', data = "Product deleted Successfully !!")
-    # query database to get available options for dropdowns
+    try:
+      myCursor.execute(delete_query, (productId,))
+      dbConnection.commit()
+    except:
+        return render_template('admin/products/deleteProducts.html', data = "Error deleting product.")
+    return render_template('admin/products/deleteProducts.html', data="Product deleted Successfully !!")
+  # query database to get available options for dropdowns
   products_query = "SELECT * FROM Products"
   myCursor.execute(products_query)
   products = myCursor.fetchall()
@@ -214,23 +232,35 @@ def deleteProducts():
       productsData.append(product[0])
   return render_template('admin/products/deleteProducts.html',products = productsData)
 
-
 @app.route('/modifyProducts', methods = ['GET', 'POST'])
 def modifyProducts():
-    #Todo waiting on thushara for the templates
     if request.method == 'POST':
+      try:
        productId = request.form['productID']
        categoryId = request.form['categoryID']
        name = request.form['productName']
+       description = request.form['productDescription']
+       color = request.form['productColor']
+       brand = request.form['productBrand']
+       quantity = request.form['productQuantity']
        rating = request.form['rating']
        price = request.form['price']
        adminId = request.form['adminId']
-       query = "UPDATE Products SET Category_ID = %s, Name = %s, Rating = %s, Price = %s, Admin_ID = %s where" \
-               "ID = %s"
-       data = (categoryId, name, rating, price, adminId, productId)
-       myCursor.execute(query, data)
-       dbConnection.commit()
-       return render_template('admin/products/productInserted.html', data = "Product Inserted Successfully")
+       product_pic = request.files['product_pic']
+      except KeyError as e:
+           return "Bad request: missing form field - {}".format(e), 400
+      # Save uploaded image of the product to static folder
+      if product_pic.filename != '':
+          filename = secure_filename(product_pic.filename)
+          product_pic.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      query = "UPDATE Products SET Category_ID = %s, Name = %s,Description = %s, Color = %s, Brand = %s, Quantity = %s, Rating = %s, Price = %s, Admin_ID = %s where ID = %s"
+      data = (categoryId, name,description, color,brand,quantity, rating, price, adminId, productId)
+      try:
+        myCursor.execute(query, data)
+        dbConnection.commit()
+        return render_template('admin/products/modifyproducts.html', data = "Product Modified Successfully!")
+      except:
+          return render_template('admin/products/modifyproducts.html', data = "Error Occurred while modifying product info !")
     # query database to get available options for dropdowns
     category_options_query = "SELECT * FROM Product_Categories"
     myCursor.execute(category_options_query)
@@ -244,8 +274,14 @@ def modifyProducts():
     admins2 = []
     for admin in admins1:
         admins2.append(admin[0])
+    products_query = "SELECT * FROM Products"
+    myCursor.execute(products_query)
+    products = myCursor.fetchall()
+    productsData = []
+    for product in products:
+        productsData.append(product[0])
     return render_template('admin/products/modifyproducts.html',
-                              categories = categories1, admins = admins2)
+                              categories = categories1, admins = admins2, products = productsData)
 
 @app.route('/homePurchases', methods = ['GET'])
 def homePurchases():
