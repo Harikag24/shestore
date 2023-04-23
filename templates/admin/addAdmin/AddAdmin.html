@@ -1,35 +1,35 @@
 <html>
     <body>
       <center>
+          {{data}}
         <form method="post" action={{url_for('addAdmin')}}>
                  <h1> Add Admins </h1>
- <form method="post" action={{url_for('userlogin')}}>
-   <label for="FirstName">FirstName &nbsp; &nbsp; &nbsp;</label>
-  <input type="text" id="FirstName" name="FirstName" required> <br>
-  <br>
-  <label for="LastName">LastName &nbsp; &nbsp; &nbsp;</label>
-  <input type="text" id="LastName" name="LastName" required> <br>
-  <br>
-    <label for="Age">Age &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
-  <input type="Number" id="Age" name="Age"> <br>
-  <br>
-  <label for="username">Username &nbsp; &nbsp; &nbsp;</label>
-  <input type="text" id="username" name="username" required>
-    <br>
-    <br>
-    <label for="password">Password &nbsp; &nbsp; &nbsp;</label>
-  <input type="password" id="password" name="password" required minlength="8"><br>
-  <br>
-    <label for="PhoneNumber">PhoneNumber </label>
-  <input type="tel" id="PhoneNumber" name="PhoneNumber" required maxlength="10" pattern="\d{10}"/> <br>
-  <br>
-  <br>
-  <button>Add</button>
-</form><a href = "{{url_for('cancelAdmin')}}"><button>Cancel</button></a>
+              <label for="FirstName">FirstName &nbsp; &nbsp; &nbsp;</label>
+              <input type="text" id="FirstName" name="FirstName" required> <br>
+              <br>
+              <label for="LastName">LastName &nbsp; &nbsp; &nbsp;</label>
+              <input type="text" id="LastName" name="LastName" required> <br>
+              <br>
+              <label for="Age">Age &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+              <input type="Number" id="Age" name="Age"> <br>
+              <br>
+              <label for="username">Username &nbsp; &nbsp; &nbsp;</label>
+              <input type="text" id="username" name="username" required>
+              <br>
+              <br>
+              <label for="password">Password &nbsp; &nbsp; &nbsp;</label>
+              <input type="password" id="password" name="password" required minlength="8"><br>
+              <br>
+              <label for="PhoneNumber">PhoneNumber </label>
+              <input type="tel" id="PhoneNumber" name="PhoneNumber" required maxlength="10" pattern="\d{10}"/> <br>
+              <br>
+              <br>
+              <button>Add</button>
+        </form>
+            <a href = "{{url_for('cancelAdmin')}}"><button>Cancel</button></a>
+            <a href = "{{url_for('adminlogin')}}"><button>Admin Home Page</button></a>
 
-
-       
-       <style>  
+       <style>
           body{
             display: flex;
             align-items: center;
@@ -47,7 +47,6 @@
             font-size: 10px;
           }
        </style>
-    </center>
-
+      </center>
     </body>
 </html>

@@ -106,13 +106,12 @@ def addAdmin():
         myCursor.execute("INSERT INTO `Admin` ( `Phone_number`, `Age`, `Fname`, `Lname`, `username`, `pwd`) VALUES (%s,%s,%s,%s,%s,%s)",
                          (phoneNumber, age, fname, lname, uname, passwd))
         dbConnection.commit()
-        return render_template('admin/addAdmin/AdminAdded.html', data="signup successful please login")
+        return render_template('admin/addAdmin/AddAdmin.html', data="Admin added successfully !!")
     except mysql.connector.Error as error:
         if error.errno == mysql.connector.errorcode.ER_DUP_ENTRY:
-            return render_template('generic/Error.html', data="existing user,please login!")
+            return render_template('admin/addAdmin/AddAdmin.html', data="existing user,please login!")
         else:
-            return render_template('generic/Error.html', data="An error occurred while inserting the user data")
-    # return render_template('AddAdmin.html')
+            return render_template('admin/addAdmin/AddAdmin.html', data = "An error occurred while inserting the admin data")
 
 @app.route("/cancelAdmin", methods =['GET', 'POST'])
 def cancelAdmin():
