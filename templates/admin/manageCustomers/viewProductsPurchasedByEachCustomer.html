@@ -101,7 +101,7 @@ input[type=submit]:hover {
 </head>
 <body style="background-color: bisque;">
 
-<h2 style="text-align: center";>The list of registered users in this website are:</h2>
+<h2 style="text-align: center";>The no of products purchased by each customer are as follows:</h2>
 <br>
 <br>
 
@@ -117,19 +117,11 @@ input[type=submit]:hover {
         <table  style="width: 90%; margin-left: 20%;">
             <tr>
               <th>Customer ID</th>
-              <th>Email</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>User Name</th>
-              <th>Password</th>
+              <th>No of Products purchased </th>
                 {% for customer in customerDetails %}
                 <tr>
                 <td>{{customer.Customer_ID}}</td>
-                <td>{{customer.Email}}</td>
-                <td>{{customer.Fname}}</td>
-                <td>{{customer.Lname}}</td>
-                <td>{{customer.username}}</td>
-                <td>{{customer.pwd}}</td>
+                <td>{{customer.count}}</td>
                 </tr>
                 {% endfor %}
           </table>
@@ -143,9 +135,8 @@ input[type=submit]:hover {
   <br>
   <br>
   <br>
-              <a href = "{{url_for('adminlogin')}}"><button>Admin Login Page</button></a>
-              <a href = "{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a>
-
+  <a href = "{{url_for('adminlogin')}}"><button>Admin Login Page</button></a>
+  <a href = "{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a>
 
 </div>
 

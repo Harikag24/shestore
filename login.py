@@ -58,9 +58,19 @@ def verifyadminlogin():
   myCursor.execute("select * from Admin where username=%s and pwd=%s",(uname,passwd))
   result = myCursor.fetchall()
   if len(result) != 0:
-    return render_template('admin/Admin.html',data='welcome,'+uname)
+    global admin_id
+    admin_id = result[0][0]
+    return render_template('admin/Admin.html', data='welcome,'+uname)
   else:
-    return render_template('login_page.html',data='invalid admin credentials !')
+    return render_template('login_page.html', data='invalid admin credentials !')
+
+@app.route('/renderAdminHomePage', methods = ['GET', 'POST'])
+def renderAdminHomePage():
+    myCursor.execute("select * from admin where Admin_ID = %s",( admin_id,))
+    result = myCursor.fetchall()
+    for res in result:
+        uname = res[5]
+    return render_template('admin/Admin.html', data='welcome,'+uname)
 
 @app.route("/signup",methods=['GET','POST'])
 def signup():
@@ -309,7 +319,7 @@ def manageCustomers():
 def viewCustomersCount():
     customers = fetchCustomers()
     customersCount = len(customers)
-    return render_template('admin/manageCustomers/customersCount.html', customersCount = customersCount)
+    return render_template('admin/manageCustomers/managecustomers.html',data = "The total no of registered users are ", customersCount = customersCount)
 
 #Todo :: map these fields to an object in c
 #Customer_ID,Email, Fname, Lname, username, pwd
@@ -327,6 +337,19 @@ def viewAllCustomers():
         cus['pwd'] = customer[5]
         customerDetails.append(cus)
     return render_template('admin/manageCustomers/viewCustomers.html', customerDetails = customerDetails)
+
+@app.route('/viewPurchasesMadeByEachCustomer', methods = ['GET', 'POST'])
+def viewPurchasesMadeByEachCustomer():
+    purchases_query = "select Customer_ID, count(*) from purchase group by 1"
+    myCursor.execute(purchases_query)
+    result = myCursor.fetchall()
+    customerDetails = []
+    for customer in result:
+       cus = {}
+       cus['Customer_ID'] = customer[0]
+       cus['count'] = customer[1]
+       customerDetails.append(cus)
+    return render_template('admin/manageCustomers/viewProductsPurchasedByEachCustomer.html', customerDetails = customerDetails)
 
 #manage tickets
 #status for a ticket can be PENDING, RESOLVED
@@ -358,12 +381,11 @@ def resolveTicket(ticketId):
   if request.method == 'POST':
     comment = request.form['Comment']
     status = request.form['Status']
-    adminId = request.form['AdminId']
     ticket_query = "UPDATE Tickets SET Admin_ID = %s, status = %s, comment = %s where Ticket_ID = %s"
-    data = (adminId, status, comment, ticketId)
+    data = (admin_id, status, comment, ticketId)
     myCursor.execute(ticket_query, data)
     dbConnection.commit()
-  return render_template('admin/manageTickets/resolveTicket.html', data = "Ticket Resolved!!")
+  return render_template('admin/manageTickets/resolveTicket.html', ticket_ID = ticketId, data = "Ticket Resolved!!")
 
 #manage categories
 @app.route('/manageCategories', methods = ['GET', 'POST'])

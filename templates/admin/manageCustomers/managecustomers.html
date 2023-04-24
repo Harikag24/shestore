@@ -2,7 +2,7 @@
   
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -62,6 +62,7 @@
 
 
 <div class="container">
+    <center>{{data}}{{customersCount}}</center>
    <a href="{{url_for('viewCustomersCount')}}" ><p ><center> View the total no of registered users in this site </center></p></a>
 </div>
 <br>
@@ -84,20 +85,25 @@
 <br>
 <br>
   <div class="container">
-    <a href="{{url_for('viewCustomersCount')}}" > <p ><center> View the products purchased by each customer </center></p> </a>
+    <a href="{{url_for('viewPurchasesMadeByEachCustomer')}}" > <p ><center> View the no of products purchased by each customer </center></p> </a>
 </div>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<div class="container">
-    <a href="#" ><p ><center> place holder --- </center></p> </a>
+<center>
+    <br>
 
-  </div>
+<br>
+    <br>
+    <div>
+         <a href = "{{url_for('adminlogin')}}"><button>Admin Login Page</button></a>
+         <a href = "{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a>
+    </div>
+
+</center>
+
 
 
 

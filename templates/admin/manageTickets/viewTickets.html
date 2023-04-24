@@ -1,9 +1,15 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <body>
+<!--<div class="nav-bar">-->
+<br>
+<br>
+<h2><center>Tickets raised by customers are : </center></h2>
+<!--</div>-->
 
-<h2><center>View Tickets</center></h2>
+<!--<div class="filter">-->
 
-<form>
+<!--</div>-->
+<div class="filter">
 <table>
         <thead>
              <tr>
@@ -15,6 +21,7 @@
                  <th>Admin_ID</th>
              <th>status</th>
              <th>comment</th>
+                 <th></th>
             </tr>
         </thead>
         <tbody>
@@ -38,19 +45,38 @@
            </tr>
         {% endfor %}
         </tbody>
-    </table>
-    </form>
+</table>
+<!--    <form method = 'POST' action = "{{url_for('renderAdminHomePage')}}">-->
+<!--        <button type = "submit">AdminHomePage</button>-->
+<!--    </form>-->
+<!--<span ><a href = "{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a></span>-->
+    <br>
+    <br>
+    <br>
+    <br>
+<span style="float: right;"><a href="{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a></span>
+</div>
+
 <style>
+
 *{
  margin:0;
  padding:0;
  outline: 0;
 }
-button{
-    text-align:center;
-    margin-top: 2em;
-    font-size: 30px;
-    padding:5px 5px;
+h1{
+    font-size: 29px;
+    padding:10px 10px;
+
+}
+.nav-bar{
+display:flex;
+align-items: center;
+justify-content: space-between;
+padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 13em;
+
 }
 .filter{
  position: absolute;
@@ -59,10 +85,10 @@ button{
  bottom: 0;
  right: 0;
  z-index: 1;
- background: rgb(76, 233, 199);
+ background: rgb(233,76,161);
 background: -moz-linear-gradient(90deg, rgb(76, 233, 212) 0%, rgb(74, 233, 196) 100%);
-background: -webkit-linear-gradient(90deg, rgb(76, 230, 233) 0%, rgb(74, 233, 183) 100%);
-background: linear-gradient(90deg, rgb(76, 233, 223) 0%, white  100%);
+background: -webkit-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgb(74, 233, 183) 100%);
+background: linear-gradient(90deg, rgba(233,76,161,1) 0%, rgb(233, 151, 74) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
 opacity: .7;
 }
@@ -70,9 +96,9 @@ table{
  position: absolute;
  z-index: 2;
  left: 50%;
- top: 30%;
- transform: translate(-70%,-30%);
- width: 60%; 
+ top: 50%;
+ transform: translate(-50%,-50%);
+ width: 60%;
  border-collapse: collapse;
  border-spacing: 0;
  box-shadow: 0 2px 15px rgba(64,64,64,.7);
@@ -83,7 +109,7 @@ table{
 td , th{
  padding: 15px 20px;
  text-align: center;
- 
+
 
 }
 th{
@@ -102,7 +128,19 @@ tr{
 tr:nth-child(even){
  background-color: #eeeeee;
 }
-.
+                      .box{
+ border-radius: 1px;
+padding:1px 250px;
+text-align: center;
+
+
+}
+ .box a{
+color: blue;
+font-size: 20px;
+padding: 10px 0;
+text-align: center;
+}
 
 </style>
 
