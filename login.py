@@ -351,6 +351,22 @@ def viewPurchasesMadeByEachCustomer():
        customerDetails.append(cus)
     return render_template('admin/manageCustomers/viewProductsPurchasedByEachCustomer.html', customerDetails = customerDetails)
 
+@app.route('/avgRatingForEachCategory', methods = ['GET', 'POST'])
+def avgRatingForEachCategory():
+    avg_query = "SELECT pc.Description, COUNT(p.ID) AS Num_Products," \
+                " AVG(p.Rating) AS Avg_Rating FROM Product_Categories pc" \
+                " LEFT JOIN Products p ON p.Category_ID = pc.Category_ID GROUP BY pc.Category_ID"
+    myCursor.execute(avg_query)
+    result = myCursor.fetchall()
+    ratingDetails = []
+    for res in result:
+        rating = {}
+        rating['Description'] = res[0]
+        rating['Count'] = res[1]
+        rating['avg_rating'] = res[2]
+        ratingDetails.append(rating)
+    return render_template('admin/manageCustomers/avgRatingForEachCategory.html',ratingDetails = ratingDetails )
+
 #manage tickets
 #status for a ticket can be PENDING, RESOLVED
 #view tickets
