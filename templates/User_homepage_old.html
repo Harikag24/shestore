@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/User_homepage.css')}}">
+</head>
+<body>
+  {{data}}
+    <div class = "topnav">
+       <a href="#profile">Profile</a>
+       <a class="active">Home</a>
+       <a href="#myorders">MyOrders</a>
+       <a href="#wishlist">Wishlist</a>
+       <a href="#cart">Cart</a>
+    </div>
+    <div class = "category">
+        <a href="product_page_old.html"><img src="{{ url_for('static', filename='Lips.jpg') }}"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+        <a href="product_page_old.html"><img src= "lipstick.jpg"/></a>
+    </div>
+
+    <ul>
+{% for item in categories %}
+    
+    <li>{{item.name}}</li>
+    <p>{{item.img_src}}</p>
+    <p>{{ url_for('static', filename='lips_photo/'+item.image_name) }}</p>
+    <img src="{{ url_for('static', filename='lips_photo/'+item.image_name) }}"/>
+   
+{% endfor %}
+
+</ul>
+<p>{{a}}</p>
+<img src="Lips.jpg" alt="Girl in a jacket" width="500" height="600"/>
+</body>
+</html>

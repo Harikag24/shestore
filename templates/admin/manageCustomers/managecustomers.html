@@ -87,17 +87,17 @@
   <div class="container">
     <a href="{{url_for('viewPurchasesMadeByEachCustomer')}}" > <p ><center> View the no of products purchased by each customer </center></p> </a>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-    <a href="{{url_for('viewPurchasesMadeByEachCustomer')}}" > <p ><center>The names of customers who have purchased at least 5 products and their total amount spent is greater than $500. </center></p> </a>
-</div>
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<div class="container">-->
+<!--    <a href="{{url_for('viewPurchasesMadeByEachCustomer')}}" > <p ><center>The names of customers who have purchased at least 5 products and their total amount spent is greater than $500. </center></p> </a>-->
+<!--</div>-->
 <br>
 <br>
 <br>
@@ -118,7 +118,7 @@
 <br>
 <br>
 <div class="container">
-    <a href="{{url_for('viewPurchasesMadeByEachCustomer')}}" > <p ><center>The names of customers who have submitted at least one ticket that has been resolved by an admin.</center></p> </a>
+    <a href="{{url_for('viewTicketsResolved')}}" > <p ><center>The names of customers who have submitted at least one ticket that has been resolved by an admin.</center></p> </a>
 </div>
 <br>
 <br>
@@ -133,6 +133,8 @@
     <div>
          <a href = "{{url_for('adminlogin')}}"><button>Admin Login Page</button></a>
          <a href = "{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a>
+                          <a href = "{{url_for('logout')}}"><button>Admin Home Page</button></a>
+
     </div>
 
 </center>

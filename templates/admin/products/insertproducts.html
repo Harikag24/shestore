@@ -160,24 +160,13 @@ input[type=submit]:hover {
           <input type="text" id="price" name="price" placeholder="Price of the product" required>
         </div>
       </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="adminId">Enter adminID</label>
-      </div>
-      <div class="col-75">
-        <select id="adminId" name="adminId" required>
-          {% for admin in admins %}
-             <option value={{admin}}>{{admin}}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </div>
+
     <div class="row">
         <div class="col-25">
-         <label for="product_pic">Insert Image of the product only in .jpg format:</label><br>
+         <label for="product_pic">Insert Image of the product only in .JPG format:</label><br>
         </div>
         <div class="col-75">
-          <input type="file" id="product_pic" name="product_pic" accept=".jpg" required>
+          <input type="file" id="product_pic" name="product_pic" accept=".JPG" required>
 
         </div>
       </div>
@@ -189,7 +178,7 @@ input[type=submit]:hover {
   </form>
   <a href = "{{url_for('adminlogin')}}"><button>Login Page</button></a>
   <a href = "{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a>
-
+<a href = "{{url_for('logout')}}"><button>Logout</button></a>
 </div>
 
 </body>

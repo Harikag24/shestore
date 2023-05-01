@@ -29,11 +29,11 @@
 #         d['Price'] = row[4]
 #         product.append(d)
 #     # Render a template that displays the product details
-#     return render_template('product_details.html', product=product)
+#     return render_template('product_details_old.html', product=product)
 #
 # @app.route('/listProducts')
 # def listProducts():
-#     render_template('product_page.html',product_id = 4)
+#     render_template('product_page_old.html',product_id = 4)
 #
 # print(f"To acces the Gloable link please click {public_url}")
 # app.run(port=6000)

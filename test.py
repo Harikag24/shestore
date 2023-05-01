@@ -33,7 +33,7 @@ print(productCategories)
 
 @app.route("/")
 def home():
-    return render_template('login_page.html')
+    return render_template('login_page_old.html')
 
 @app.route("/login", methods=['GET','POST'])
 def login():
@@ -96,6 +96,6 @@ if __name__=='__main__':
     #     myCursor.execute("insert into Customer(`Email`, `Fname`, `Lname`, `username`, `pwd`) values(?,?,?,?,?)",
     #                      (email, fname, lname, uname, passwd))
     #
-    #     return render_template('login_page.html', data="signup successful please login")
+    #     return render_template('login_page_old.html', data="signup successful please login")
     # except:
-    #     return render_template('login_page.html', data="existing user,please login!")
+    #     return render_template('login_page_old.html', data="existing user,please login!")

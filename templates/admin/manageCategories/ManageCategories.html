@@ -8,16 +8,8 @@
           <input type="textarea" id="Description" name="Description" required>
             <br>
             <br>
-            <label for="adminId">&nbsp; Enter adminID &nbsp; &nbsp; &nbsp; &nbsp;</label>
-          <select id="adminId" name="adminId" required style="width: 153;">
-              {% for admin in admins %}
-                   <option value={{admin}}>{{admin}}</option>
-              {% endfor %}
-          </select>
-            <br>
-            <br>
-            <label for="category_pic">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Category Picture &nbsp; &nbsp;</label>
-          <input type="file" name="category_pic" id="category_pic" accept=".jpg"  required>
+            <label for="category_pic">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Category Picture in .JPG format &nbsp; &nbsp;</label>
+          <input type="file" name="category_pic" id="category_pic" accept=".JPG"  required>
         <br>
         <br>
             <br>
@@ -30,6 +22,8 @@
           <div>
          <a href = "{{url_for('adminlogin')}}"><button>Admin Login Page</button></a>
          <a href = "{{url_for('renderAdminHomePage')}}"><button>Admin Home Page</button></a>
+                          <a href = "{{url_for('logout')}}"><button>Logout</button></a>
+
          </div>
        <style>  
           body{
